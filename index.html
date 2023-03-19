@@ -15,27 +15,36 @@
   <main>
     <div id="home-page">
       <section id="game-description">
-        ...
+        <h3>Welcome to Precinct 19</h3>
+        <p>
+          You find yourself trapped inside Precinct 19, a mysterious, dystopian facility. As an amnesiac protagonist, you must uncover the truth behind the facility, its purpose, and the reason for your confinement. To do so, you must solve a series of interconnected puzzles that will test your logic, dexterity, and luck. But be careful, you only have one life. Once you die, you can never play the game again.
+        </p>
       </section>
       <section id="game-controls">
-        ...
+        <h3>Controls</h3>
+        <p>
+          Use your mouse to interact with objects and the environment. Click on items to pick them up, examine them, or use them to solve puzzles. Navigate through the facility by clicking on doors and other points of interest.
+        </p>
       </section>
       <section id="play-button">
         <button onclick="startGame()">Play Now</button>
       </section>
     </div>
     <div id="tumbler-puzzle-page" style="display: none;">
-  <section id="tumbler-puzzle-instructions">
-    <h3>Tumbler Puzzle</h3>
-    <p>
-      Find and interpret the clues scattered around the room to determine the correct sequence of symbols on the tumblers. Click on a tumbler to cycle through the available symbols. Once you believe you have the correct sequence, click "Submit" to check your solution.
-    </p>
-  </section>
-  <div class="tumblers">
-    ...
-  </div>
-  <button onclick="checkSolution()">Submit</button>
-</div>
+      <section id="tumbler-puzzle-instructions">
+        <h3>Tumbler Puzzle</h3>
+        <p>
+          Find and interpret the clues scattered around the room to determine the correct sequence of symbols on the tumblers. Click on a tumbler to cycle through the available symbols. Once you believe you have the correct sequence, click "Submit" to check your solution.
+        </p>
+      </section>
+      <div class="tumblers">
+        <div class="tumbler" onclick="cycleTumbler(0)">□</div>
+        <div class="tumbler" onclick="cycleTumbler(1)">□</div>
+        <div class="tumbler" onclick="cycleTumbler(2)">□</div>
+        <div class="tumbler" onclick="cycleTumbler(3)">□</div>
+        <div class="tumbler" onclick="cycleTumbler(4)">□</div>
+      </div>
+      <button onclick="checkSolution()">Submit</button>
     </div>
   </main>
   <footer>
