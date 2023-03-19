@@ -1,0 +1,51 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #222;
+  color: #fff;
+}
+
+header {
+  padding: 2rem 0;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+#game-description {
+  margin: 2rem 0;
+}
+
+#game-controls {
+  margin: 1rem 0;
+}
+
+#play-button {
+  margin: 2rem 0;
+}
+
+button {
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  background-color: #444;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #666;
+}
+
+footer {
+  padding: 1rem 0;
+  font-size: 0.8rem;
+}
