@@ -1,6 +1,7 @@
-const symbols = ['□', '■', '○', '△', '★'];
-const correctSequence = ['■', '△', '○', '□', '★'];
-const playerSequence = new Array(symbols.length).fill(0);
+const symbols = ['□', '△', '○'];
+const solution = [1, 0, 2, 1, 0];
+const playerInput = [0, 0, 0, 0, 0];
+const tumblers = document.querySelectorAll('.tumbler');
 
 function cycleTumbler(index) {
   playerInput[index] = (playerInput[index] + 1) % symbols.length;
