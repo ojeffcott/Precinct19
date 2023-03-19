@@ -11,6 +11,7 @@ function cycleTumbler(index) {
 function checkSolution() {
   if (playerInput.every((value, index) => value === solution[index])) {
     alert('Congratulations! You solved the puzzle.');
+    location.href = "dexterity_puzzle.html";
   } else {
     alert('Incorrect solution. Please try again.');
   }
