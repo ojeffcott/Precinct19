@@ -13,6 +13,7 @@ let rightArrowPressed = false;
 let leftArrowPressed = false;
 const platformSpeed = 7;
 const gameTime = 30000; // 30 seconds
+let timeLeft = gameTime / 1000;
 
 document.addEventListener("keydown", keyDownHandler);
 document.addEventListener("keyup", keyUpHandler);
@@ -41,12 +42,17 @@ function drawPlatform() {
   ctx.closePath();
 }
 
+const skullImage = new Image();
+skullImage.src = 'skull.png';
+
 function drawSkeletonHead() {
-  ctx.beginPath();
-  ctx.arc(skeletonHeadX, skeletonHeadY, skeletonHeadRadius, 0, Math.PI * 2);
+  ctx.drawImage(skullImage, skeletonHeadX - skeletonHeadRadius, skeletonHeadY - skeletonHeadRadius, skeletonHeadRadius * 2, skeletonHeadRadius * 2);
+}
+
+function drawTimer() {
+  ctx.font = "16px Arial";
   ctx.fillStyle = "#FFFFFF";
-  ctx.fill();
-  ctx.closePath();
+  ctx.fillText("Time left: " + timeLeft, 8, 20);
 }
 
 function gameOver() {
@@ -63,6 +69,7 @@ function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawPlatform();
   drawSkeletonHead();
+  drawTimer();
 
   if (skeletonHeadX + skeletonHeadRadius > canvas.width || skeletonHeadX - skeletonHeadRadius < 0) {
     skeletonHeadSpeedX = -skeletonHeadSpeedX;
@@ -89,11 +96,19 @@ function draw() {
 
   skeletonHeadX += skeletonHeadSpeedX;
   skeletonHeadY += skeletonHeadSpeedY;
-  requestAnimationFrame(draw);
+    requestAnimationFrame(draw);
 }
 
+function updateTimer() {
+  timeLeft--;
+  if (timeLeft < 0) {
+    gameWon();
+  }
+}
+
+setInterval(updateTimer, 1000);
 setTimeout(() => {
-  gameWon();
+  clearInterval(updateTimer);
 }, gameTime);
 
 draw();
