@@ -12,6 +12,7 @@ let skeletonHeadSpeedY = -3;
 let rightArrowPressed = false;
 let leftArrowPressed = false;
 const platformSpeed = 7;
+const gameTime = 30000; // 30 seconds
 
 document.addEventListener("keydown", keyDownHandler);
 document.addEventListener("keyup", keyUpHandler);
@@ -48,6 +49,16 @@ function drawSkeletonHead() {
   ctx.closePath();
 }
 
+function gameOver() {
+  alert("Game Over!");
+  document.location.reload();
+}
+
+function gameWon() {
+  alert("Congratulations! You survived the dexterity challenge.");
+  location.href = "luck_puzzle.html";
+}
+
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawPlatform();
@@ -66,8 +77,8 @@ function draw() {
   ) {
     skeletonHeadSpeedY = -Math.abs(skeletonHeadSpeedY);
   } else if (skeletonHeadY + skeletonHeadRadius > canvas.height) {
-    alert("Game Over!");
-    document.location.reload();
+    gameOver();
+    return;
   }
 
   if (rightArrowPressed && platformX < canvas.width - platformWidth) {
@@ -80,5 +91,9 @@ function draw() {
   skeletonHeadY += skeletonHeadSpeedY;
   requestAnimationFrame(draw);
 }
+
+setTimeout(() => {
+  gameWon();
+}, gameTime);
 
 draw();
