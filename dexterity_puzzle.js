@@ -42,3 +42,39 @@ function drawSkeleton() {
 
 function drawTimer() {
   ctx.font = '16px
+
+  // ... (previous code)
+
+  if (
+    skeletonY + skeletonSize >= canvas.height - platformHeight &&
+    skeletonX + skeletonSize >= platformX &&
+    skeletonX <= platformX + platformWidth
+  ) {
+    skeletonSpeedY *= bounceFactor;
+    skeletonY = canvas.height - platformHeight - skeletonSize;
+  }
+
+  if (skeletonY + skeletonSize > canvas.height) {
+    alert('Game over! You failed to keep the skeleton head in the air.');
+    // Redirect to the game over screen or restart the puzzle
+  }
+}
+
+function keyDownHandler(e) {
+  if (e.key === 'Right' || e.key === 'ArrowRight') {
+    platformX += 10;
+    if (platformX + platformWidth > canvas.width) {
+      platformX = canvas.width - platformWidth;
+    }
+  } else if (e.key === 'Left' || e.key === 'ArrowLeft') {
+    platformX -= 10;
+    if (platformX < 0) {
+      platformX = 0;
+    }
+  }
+}
+
+document.addEventListener('keydown', keyDownHandler, false);
+startTimer();
+setInterval(draw, 10);
+
