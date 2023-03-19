@@ -19,7 +19,7 @@ function startTimer() {
     if (timer <= 0) {
       clearInterval(interval);
       alert('Congratulations! You have completed the dexterity puzzle.');
-      // Redirect to the next puzzle or game over screen
+      location.href = 'luck_puzzle.html';
     }
   }, 1000);
 }
@@ -56,7 +56,7 @@ function drawTimer() {
 
   if (skeletonY + skeletonSize > canvas.height) {
     alert('Game over! You failed to keep the skeleton head in the air.');
-    // Redirect to the game over screen or restart the puzzle
+    location.reload();
   }
 }
 
