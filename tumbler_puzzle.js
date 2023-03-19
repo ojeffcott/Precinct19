@@ -13,6 +13,7 @@ function checkSolution() {
     alert('Congratulations! You solved the puzzle.');
     location.href = "dexterity_puzzle.html";
   } else {
-    alert('Incorrect solution. Please try again.');
+    alert('Incorrect solution. You lose.');
+location.href = 'defeat.html';
   }
 }
