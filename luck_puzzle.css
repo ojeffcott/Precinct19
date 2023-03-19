@@ -1,1 +1,21 @@
-tbc
+#luck-puzzle {
+  text-align: center;
+  padding-top: 30vh;
+  background-color: #222;
+  color: #fff;
+}
+
+#doors button {
+  font-size: 24px;
+  padding: 10px 20px;
+  margin: 20px;
+  background-color: #444;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+#doors button:hover {
+  background-color: #666;
+}
+
