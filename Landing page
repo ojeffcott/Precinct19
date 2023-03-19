@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Precinct 19 - A Dystopian Puzzle Adventure</title>
+</head>
+<body>
+  <header>
+    <h1>Precinct 19</h1>
+    <h2>A Dystopian Puzzle Adventure</h2>
+  </header>
+  <main>
+    <section id="game-description">
+      <p>
+        In the dystopian city of Nocivos, you are Alex, a former detective framed for a crime you didn't commit. Traverse the treacherous streets of Precinct 19, solve the puzzles set by The Puppeteer, and clear your name in this intense, action-packed adventure. With only one life, every decision counts. Are you ready to restore justice?
+      </p>
+    </section>
+    <section id="game-controls">
+      <h3>Controls:</h3>
+      <ul>
+        <li>Arrow keys: Move</li>
+        <li>Spacebar: Interact</li>
+        <li>ESC: Pause</li>
+      </ul>
+    </section>
+    <section id="play-button">
+      <button onclick="startGame()">Play Now</button>
+    </section>
+  </main>
+  <footer>
+    <p>© 2023 Precinct 19. All rights reserved.</p>
+  </footer>
+  <script src="game.js"></script>
+</body>
+</html>
