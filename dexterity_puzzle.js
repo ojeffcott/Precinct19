@@ -1,86 +1,84 @@
-const canvas = document.getElementById('dexterityCanvas');
-const ctx = canvas.getContext('2d');
+const canvas = document.getElementById("dexterityCanvas");
+const ctx = canvas.getContext("2d");
 const platformWidth = 100;
 const platformHeight = 10;
-const skeletonSize = 30;
-const gravity = 0.5;
-const bounceFactor = -0.5;
+const skeletonHeadRadius = 10;
 let platformX = (canvas.width - platformWidth) / 2;
-let skeletonX = Math.random() * (canvas.width - skeletonSize);
-let skeletonY = 0;
-let skeletonSpeedY = 2;
+let platformY = canvas.height - platformHeight;
+let skeletonHeadX = canvas.width / 2;
+let skeletonHeadY = 30;
+let skeletonHeadSpeedX = 3;
+let skeletonHeadSpeedY = -3;
+let rightArrowPressed = false;
+let leftArrowPressed = false;
+const platformSpeed = 7;
 
-let timer = 60;
-let interval;
+document.addEventListener("keydown", keyDownHandler);
+document.addEventListener("keyup", keyUpHandler);
 
-function startTimer() {
-  interval = setInterval(() => {
-    timer--;
-    if (timer <= 0) {
-      clearInterval(interval);
-      alert('Congratulations! You have completed the dexterity puzzle.');
-      // Redirect to the next puzzle or game over screen
-    }
-  }, 1000);
+function keyDownHandler(e) {
+  if (e.key === "Right" || e.key === "ArrowRight") {
+    rightArrowPressed = true;
+  } else if (e.key === "Left" || e.key === "ArrowLeft") {
+    leftArrowPressed = true;
+  }
+}
+
+function keyUpHandler(e) {
+  if (e.key === "Right" || e.key === "ArrowRight") {
+    rightArrowPressed = false;
+  } else if (e.key === "Left" || e.key === "ArrowLeft") {
+    leftArrowPressed = false;
+  }
 }
 
 function drawPlatform() {
   ctx.beginPath();
-  ctx.rect(platformX, canvas.height - platformHeight, platformWidth, platformHeight);
-  ctx.fillStyle = '#fff';
+  ctx.rect(platformX, platformY, platformWidth, platformHeight);
+  ctx.fillStyle = "#FFFFFF";
   ctx.fill();
   ctx.closePath();
 }
 
-function drawSkeleton() {
+function drawSkeletonHead() {
   ctx.beginPath();
-  ctx.arc(skeletonX + skeletonSize / 2, skeletonY + skeletonSize / 2, skeletonSize / 2, 0, Math.PI * 2);
-  ctx.fillStyle = '#f00';
+  ctx.arc(skeletonHeadX, skeletonHeadY, skeletonHeadRadius, 0, Math.PI * 2);
+  ctx.fillStyle = "#FFFFFF";
   ctx.fill();
   ctx.closePath();
-}
-
-function drawTimer() {
-  ctx.font = '16px Arial';
-  ctx.fillStyle = '#fff';
-  ctx.fillText('Time remaining: ' + timer, 10, 20);
 }
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawPlatform();
-  drawSkeleton();
-  drawTimer();
+  drawSkeletonHead();
 
-  skeletonY += skeletonSpeedY;
-  skeletonSpeedY += gravity;
+  if (skeletonHeadX + skeletonHeadRadius > canvas.width || skeletonHeadX - skeletonHeadRadius < 0) {
+    skeletonHeadSpeedX = -skeletonHeadSpeedX;
+  }
 
-  if (
-    skeletonY + skeletonSize >= canvas.height - platformHeight &&
-    skeletonX + skeletonSize >= platformX &&
-    skeletonX <= platformX + platformWidth
+  if (skeletonHeadY - skeletonHeadRadius < 0) {
+    skeletonHeadSpeedY = -skeletonHeadSpeedY;
+  } else if (
+    skeletonHeadY + skeletonHeadRadius > platformY &&
+    skeletonHeadX > platformX &&
+    skeletonHeadX < platformX + platformWidth
   ) {
-    skeletonSpeedY *= bounceFactor;
+    skeletonHeadSpeedY = -Math.abs(skeletonHeadSpeedY);
+  } else if (skeletonHeadY + skeletonHeadRadius > canvas.height) {
+    alert("Game Over!");
+    document.location.reload();
   }
 
-  if (skeletonY + skeletonSize > canvas.height) {
-    alert('Game Over! The skeleton head hit the ground.');
-    // Redirect to the game over screen
+  if (rightArrowPressed && platformX < canvas.width - platformWidth) {
+    platformX += platformSpeed;
+  } else if (leftArrowPressed && platformX > 0) {
+    platformX -= platformSpeed;
   }
 
+  skeletonHeadX += skeletonHeadSpeedX;
+  skeletonHeadY += skeletonHeadSpeedY;
   requestAnimationFrame(draw);
 }
 
-function movePlatform(e) {
-  if (e.key === 'ArrowLeft') {
-    platformX -= 7;
-    if (platformX < 0) platformX = 0;
-  } else if (e.key === 'ArrowRight') {
-    platformX += 7;
-    if (platformX + platformWidth > canvas.width) platformX = canvas.width - platformWidth;
-  }
-}
-
-document.addEventListener('keydown', movePlatform);
-startTimer();
 draw();
