@@ -4,7 +4,8 @@ function chooseDoor(doorNumber) {
   if (randomOutcome === 1) {
     alert('Congratulations! You have completed Precinct 19.');
     // Redirect to the victory screen or main menu
-    location.href = 'index.html';
+    location.href = 'victory.html';
+  
   } else if (randomOutcome === 2) {
     alert('You have been sent back to the beginning. Try again!');
     // Redirect to the homepage
@@ -12,5 +13,6 @@ function chooseDoor(doorNumber) {
   } else {
     alert('You have met a terrible fate. Game over!');
     // Redirect to the game over screen or disable game access
+    location.href = 'defeat.html';
   }
 }
