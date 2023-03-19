@@ -14,6 +14,6 @@ function checkSolution() {
     location.href = "dexterity_puzzle.html";
   } else {
     alert('Incorrect solution. You lose.');
-location.href = 'defeat.html';
+    location.href = 'defeat.html';
   }
 }
