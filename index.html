@@ -4,9 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
-  <title>Precinct 19 - A Dystopian Puzzle Adventure</title>
   <link rel="stylesheet" href="tumbler_puzzle.css">
-<script src="tumbler_puzzle.js"></script>
+  <title>Precinct 19 - A Dystopian Puzzle Adventure</title>
 </head>
 <body>
   <header>
@@ -14,27 +13,32 @@
     <h2>A Dystopian Puzzle Adventure</h2>
   </header>
   <main>
-  <div id="home-page">
-    <section id="game-description">
-      ...
-    </section>
-    <section id="game-controls">
-      ...
-    </section>
-    <section id="play-button">
-      <button onclick="startGame()">Play Now</button>
-    </section>
-  </div>
-  <div id="tumbler-puzzle-page" style="display: none;">
-    <div class="tumblers">
-      ...
+    <div id="home-page">
+      <section id="game-description">
+        ...
+      </section>
+      <section id="game-controls">
+        ...
+      </section>
+      <section id="play-button">
+        <button onclick="startGame()">Play Now</button>
+      </section>
     </div>
-    <button onclick="checkSolution()">Submit</button>
-  </div>
-</main>
+    <div id="tumbler-puzzle-page" style="display: none;">
+      <div class="tumblers">
+        <div class="tumbler" onclick="cycleTumbler(0)">□</div>
+        <div class="tumbler" onclick="cycleTumbler(1)">□</div>
+        <div class="tumbler" onclick="cycleTumbler(2)">□</div>
+        <div class="tumbler" onclick="cycleTumbler(3)">□</div>
+        <div class="tumbler" onclick="cycleTumbler(4)">□</div>
+      </div>
+      <button onclick="checkSolution()">Submit</button>
+    </div>
+  </main>
   <footer>
     <p>© 2023 Precinct 19. All rights reserved.</p>
   </footer>
   <script src="game.js"></script>
+  <script src="tumbler_puzzle.js"></script>
 </body>
 </html>
