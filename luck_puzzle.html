@@ -1,1 +1,31 @@
-tbc
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="luck_puzzle.css">
+  <title>Precinct 19 - Luck Puzzle</title>
+</head>
+<body>
+  <header>
+    <h1>Precinct 19</h1>
+    <h2>Luck Puzzle</h2>
+  </header>
+  <main>
+    <div id="luck-puzzle">
+      <p>Choose one of the three doors. One leads to victory, another to a fresh start, and the last to certain death. Choose wisely!</p>
+      <div id="doors">
+        <button onclick="chooseDoor(1)">Door 1</button>
+        <button onclick="chooseDoor(2)">Door 2</button>
+        <button onclick="chooseDoor(3)">Door 3</button>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>© 2023 Precinct 19. All rights reserved.</p>
+  </footer>
+  <script src="luck_puzzle.js"></script>
+</body>
+</html>
+
