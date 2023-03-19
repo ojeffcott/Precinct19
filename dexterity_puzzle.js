@@ -57,7 +57,7 @@ function drawTimer() {
 
 function gameOver() {
   alert("Game Over!");
-  document.location.reload();
+  location.href = 'defeat.html';
 }
 
 function gameWon() {
